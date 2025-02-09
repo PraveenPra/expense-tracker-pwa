@@ -1,5 +1,13 @@
-document.addEventListener("DOMContentLoaded", loadExpenses);
+document.addEventListener("DOMContentLoaded", Start);
 
+function Start() {
+  // Set today's date as the default value for the date input
+  const dateInput = document.getElementById("date");
+  const today = new Date().toISOString().split("T")[0];
+  dateInput.value = today;
+
+  loadExpenses();
+}
 const form = document.getElementById("expense-form");
 const tableBody = document.querySelector("#expense-table tbody");
 
