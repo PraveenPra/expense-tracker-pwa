@@ -12,15 +12,82 @@
     <h1>Expense Tracker</h1>
     
     <form id="expense-form">
+    <div class="vbox">
+    <input type="number" id="amount" placeholder="Amount" required>
         <input type="date" id="date" >
-        <input type="text" id="description" placeholder="Expense description" required>
-        <input type="number" id="amount" placeholder="Amount" required>
+       
+</div>
+        <div class="category-container">
+        <label>
+            <input type="radio" name="category" value="Rent">
+            <span> Rent</span>
+        </label>
+    
+        <label>
+            <input type="radio" name="category" value="Travel">
+            <span> Travel</span>
+        </label>
+    
+        <label>
+            <input type="radio" name="category" value="Puja items">
+            <span> Puja Items</span>
+        </label>
+    
+        <label>
+            <input type="radio" name="category" value="Food">
+            <span> Food</span>
+        </label>
+    
+        <label>
+            <input type="radio" name="category" value="Clothes">
+            <span>Dress</span>
+        </label>
+    
+        <label>
+            <input type="radio" name="category" value="Health">
+            <span> Health</span>
+        </label>
+    
+        <label>
+            <input type="radio" name="category" value="Send others">
+            <span>To Others</span>
+        </label>
+    
+        <label>
+            <input type="radio" name="category" value="Mom">
+            <span>Mom</span>
+        </label>
+    
+        <label>
+            <input type="radio" name="category" value="Shopping - out">
+            <span> Shopping</span>
+        </label>
+    
+        <label>
+            <input type="radio" name="category" value="Shop">
+            <span> Shop</span>
+        </label>
+    
+        <label>
+            <input type="radio" name="category" value="Dining out">
+            <span> Dine Out</span>
+        </label>
+    
+        <label>
+            <input type="radio" name="category" value="Others">
+            <span>Misc</span>
+        </label>
+    </div>
+    <input type="text" id="description" placeholder="Notes" >
+
+    <div class="category-container">
         <label>
         <input type="radio" name="payment-method" value="UPI" checked> UPI
     </label>
     <label>
         <input type="radio" name="payment-method" value="Cash"> Cash
     </label>
+    </div>
         <button type="submit">Add Expense</button>
     </form>
 
@@ -29,14 +96,16 @@
         <thead>
             <tr>
                 <th>Date</th>
-                <th>Description</th>
+                
                 <th>Amount</th>
-                <th>Payment Method</th>
+                <th>Category</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody></tbody>
     </table>
+
+    <button id="clear-all">Clear All Expenses</button>
 
     <button id="download-csv">Download CSV</button>
 

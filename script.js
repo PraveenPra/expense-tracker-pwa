@@ -33,11 +33,15 @@ form.addEventListener("submit", function (e) {
   const paymentMethod =
     document.querySelector('input[name="payment-method"]:checked')?.value ||
     "UPI";
+  const category =
+    document.querySelector('input[name="category"]:checked')?.value ||
+    "Unknown";
 
   const expense = {
     date,
     description,
     amount,
+    category,
     paymentMethod,
     timestamp: Date.now(),
   };
@@ -56,12 +60,13 @@ form.addEventListener("submit", function (e) {
 function addExpenseToTable(expense) {
   const row = document.createElement("tr");
   row.innerHTML = `
+
         <td>${expense.date}</td>
-        <td>${expense.description}</td>
         <td>${expense.amount}</td>
-        <td>${expense.paymentMethod}</td>
+        <td>${expense.category}</td>
         <td><button onclick="deleteExpense(this)">❌</button></td>
     `;
+
   tableBody.appendChild(row);
 }
 
@@ -93,4 +98,11 @@ document.getElementById("download-csv").addEventListener("click", function () {
   a.href = URL.createObjectURL(blob);
   a.download = "expenses.csv";
   a.click();
+});
+
+document.getElementById("clear-all").addEventListener("click", function () {
+  if (confirm("Are you sure you want to clear all expenses?")) {
+    localStorage.removeItem("expenses");
+    location.reload(); // Refresh UI
+  }
 });

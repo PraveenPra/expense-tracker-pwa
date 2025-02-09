@@ -1,8 +1,17 @@
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
     max-width: 600px;
     margin: auto;
     text-align: center;
+    padding: 1rem;
 }
 
 input, select, button {
@@ -20,4 +29,25 @@ table {
 th, td {
     padding: 10px;
     border: 1px solid #ddd;
+}
+
+/* Category Container */
+.category-container {
+    display: flex;
+
+   flex-wrap: wrap;
+    gap: 10px;
+    /* max-width: 600px;
+    margin: 20px auto; */
+}
+
+.vbox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#amount,#date{
+    width: 40%;
 }
