@@ -27,7 +27,7 @@ table {
 }
 
 th, td {
-    padding: 10px;
+   
     border: 1px solid #ddd;
 }
 
@@ -78,11 +78,15 @@ th, td {
     width: 40%;
 }
 
-button.btn-icon{
+.btn-icon{
     cursor: pointer;
 width: max-content;
 aspect-ratio: 1;
 padding: 2px;
+
+outline: none;
+border: 2px solid #bbb;
+background: #eee;
 }
 
 .cta{
