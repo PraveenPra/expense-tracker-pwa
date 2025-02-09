@@ -44,10 +44,33 @@ th, td {
 .vbox{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
     align-items: center;
+    gap: 0.25rem;
 }
 
 #amount,#date{
     width: 40%;
+}
+
+button.btn-icon{
+    cursor: pointer;
+width: max-content;
+aspect-ratio: 1;
+padding: 2px;
+}
+
+.cta{
+    background-color: cornflowerblue;
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    max-width: 40%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.cta > svg path{
+    stroke:#fff;
 }
