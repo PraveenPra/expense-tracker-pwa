@@ -1,13 +1,17 @@
 document.addEventListener("DOMContentLoaded", Start);
 
 function Start() {
+  ResetDate();
+  loadExpenses();
+}
+
+function ResetDate() {
   // Set today's date as the default value for the date input
   const dateInput = document.getElementById("date");
   const today = new Date().toISOString().split("T")[0];
   dateInput.value = today;
-
-  loadExpenses();
 }
+
 const form = document.getElementById("expense-form");
 const tableBody = document.querySelector("#expense-table tbody");
 
@@ -27,7 +31,8 @@ form.addEventListener("submit", function (e) {
   const description = document.getElementById("description").value;
   const amount = document.getElementById("amount").value;
   const paymentMethod =
-    document.getElementById("payment-method").value || "UPI";
+    document.querySelector('input[name="payment-method"]:checked')?.value ||
+    "UPI";
 
   const expense = { date, description, amount, paymentMethod };
 
@@ -38,6 +43,7 @@ form.addEventListener("submit", function (e) {
 
   addExpenseToTable(expense);
   form.reset();
+  ResetDate();
 });
 
 // Function to add a row to the table
