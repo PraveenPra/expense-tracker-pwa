@@ -34,7 +34,13 @@ form.addEventListener("submit", function (e) {
     document.querySelector('input[name="payment-method"]:checked')?.value ||
     "UPI";
 
-  const expense = { date, description, amount, paymentMethod };
+  const expense = {
+    date,
+    description,
+    amount,
+    paymentMethod,
+    timestamp: Date.now(),
+  };
 
   // Save to localStorage
   const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
