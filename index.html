@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+    
+    <form id="expense-form">
+        <input type="date" id="date" required>
+        <input type="text" id="description" placeholder="Expense description" required>
+        <input type="number" id="amount" placeholder="Amount" required>
+        <select id="payment-method">
+            <option value="UPI" selected>UPI</option>
+            <option value="Cash">Cash</option>
+            <option value="Card">Card</option>
+        </select>
+        <button type="submit">Add Expense</button>
+    </form>
+
+    <h2>Expenses</h2>
+    <table id="expense-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Payment Method</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <button id="download-csv">Download CSV</button>
+
+    <script src="main.js"></script>
+</body>
+</html>
