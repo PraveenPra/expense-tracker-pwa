@@ -2,8 +2,11 @@ const CACHE_NAME = "expense-tracker-v1";
 const urlsToCache = [
   "/",
   "/index.html",
+  "/view-expenses.html",
   "/styles.css",
   "/script.js",
+  "/view-expenses.js",
+  "/utils.js",
   "/manifest.json",
   "/icon-512x512.png",
 ];
