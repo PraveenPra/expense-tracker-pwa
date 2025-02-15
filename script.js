@@ -15,7 +15,23 @@ function ResetDate() {
 }
 
 function RenderCategories() {
-  const categories = JSON.parse(localStorage.getItem("categories")) || [];
+  const defaultCategories = [
+    { value: "Others", label: "Misc" },
+    { value: "Travel", label: "Travel" },
+    { value: "Food", label: "Food" },
+    { value: "Dining out", label: "Dine Out" },
+    { value: "Shopping - out", label: "Shopping" },
+    { value: "Send others", label: "To Others" },
+    { value: "Shop", label: "Shop" },
+    { value: "Health", label: "Health" },
+    { value: "Clothes", label: "Dress" },
+    { value: "Puja items", label: "Puja Items" },
+    { value: "Recharge", label: "Recharge" },
+    { value: "Mom", label: "Mom" },
+    { value: "Rent", label: "Rent" },
+  ];
+  const categories =
+    JSON.parse(localStorage.getItem("categories")) || defaultCategories;
 
   const categoryContainer = document.querySelector(".category-container");
 
