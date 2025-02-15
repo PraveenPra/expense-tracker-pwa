@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", Start);
 
 function Start() {
   ResetDate();
+  RenderCategories();
 }
 
 function ResetDate() {
@@ -9,6 +10,25 @@ function ResetDate() {
   const dateInput = document.getElementById("date");
   const today = new Date().toISOString().split("T")[0];
   dateInput.value = today;
+}
+
+function RenderCategories() {
+  const categories = JSON.parse(localStorage.getItem("categories")) || [];
+
+  const categoryContainer = document.querySelector(".category-container");
+
+  if (categories.length > 0) {
+    categoryContainer.innerHTML = ""; // Clear existing categories
+
+    categories.forEach((category) => {
+      const label = document.createElement("label");
+      label.innerHTML = `
+        <input type="radio" name="category" value="${category?.value}" />
+        <span>${category?.label}</span>
+      `;
+      categoryContainer.appendChild(label);
+    });
+  }
 }
 
 const form = document.getElementById("expense-form");
