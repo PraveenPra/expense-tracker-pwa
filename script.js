@@ -41,7 +41,9 @@ function RenderCategories() {
     categories.forEach((category) => {
       const label = document.createElement("label");
       label.innerHTML = `
-        <input type="radio" name="category" value="${category?.value}" />
+        <input type="radio" name="category" value="${category?.value}" ${
+        category?.value === "Others" ? "checked" : ""
+      }  />
         <span>${category?.label}</span>
       `;
       categoryContainer.appendChild(label);
