@@ -6,10 +6,12 @@ function Start() {
 }
 
 function ResetDate() {
-  // Set today's date as the default value for the date input
+  // Get stored date or default to today's date
   const dateInput = document.getElementById("date");
+  const storedDate = localStorage.getItem("selectedDate");
   const today = new Date().toISOString().split("T")[0];
-  dateInput.value = today;
+
+  dateInput.value = storedDate || today;
 }
 
 function RenderCategories() {
@@ -37,9 +39,13 @@ const form = document.getElementById("expense-form");
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const date =
-    document.getElementById("date").value ||
-    new Date().toISOString().split("T")[0];
+  const dateInput = document.getElementById("date");
+  const selectedDate = dateInput.value;
+  const finalDate = selectedDate || new Date().toISOString().split("T")[0];
+
+  // Store selected date in localStorage
+  localStorage.setItem("selectedDate", finalDate);
+
   const description = document.getElementById("description").value;
   const amount = document.getElementById("amount").value;
   const paymentMethod =
@@ -50,7 +56,7 @@ form.addEventListener("submit", function (e) {
     "Unknown";
 
   const expense = {
-    date,
+    date: finalDate,
     description,
     amount,
     category,
