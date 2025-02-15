@@ -3,9 +3,9 @@ document.getElementById("download-csv").addEventListener("click", function () {
   const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
   if (expenses.length === 0) return alert("No expenses to download.");
 
-  let csv = "Date,Description,Amount,Payment Method\n";
+  let csv = "Date,Amount,Category,Description,Payment Method, Timestamp\n";
   expenses.forEach((exp) => {
-    csv += `${exp.date},${exp.description},${exp.amount},${exp.paymentMethod}\n`;
+    csv += `${exp.date},${exp.amount},${exp.category},${exp.description},${exp.paymentMethod},${exp.timestamp}\n`;
   });
 
   const blob = new Blob([csv], { type: "text/csv" });
