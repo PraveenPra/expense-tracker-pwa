@@ -173,26 +173,6 @@
         localStorage.setItem("categories", JSON.stringify(categories));
       }
 
-      function renderCategories() {
-        const container = document.getElementById("categoryContainer");
-        container.innerHTML = "";
-
-        categories.forEach((category, index) => {
-          const div = document.createElement("div");
-          div.classList.add("category");
-
-          div.innerHTML = `
-                    <label>
-                        <input type="radio" name="category" value="${category.value}">
-                        <span ondblclick="editCategory(${index})" id="cat-${index}">${category.label}</span>
-                    </label>
-                    <button class="remove-btn" onclick="removeCategory(${index})">✖</button>
-                `;
-
-          container.appendChild(div);
-        });
-      }
-
       function addCategory() {
         const input = document.getElementById("newCategory");
         const value = input.value.trim();
@@ -240,6 +220,51 @@
           if (event.key === "Enter") saveEdit(index, input.value);
           if (event.key === "Escape") cancelEdit(index, currentLabel);
         });
+      }
+
+      function addLongPressListener() {
+        let pressTimer;
+
+        document.querySelectorAll(".category span").forEach((span, index) => {
+          span.addEventListener("touchstart", function () {
+            pressTimer = setTimeout(() => editCategory(index), 1000); // Hold for 1 sec
+          });
+
+          span.addEventListener("touchend", function () {
+            clearTimeout(pressTimer);
+          });
+
+          span.addEventListener("mousedown", function () {
+            pressTimer = setTimeout(() => editCategory(index), 1000); // Hold for 1 sec
+          });
+
+          span.addEventListener("mouseup", function () {
+            clearTimeout(pressTimer);
+          });
+        });
+      }
+
+      // Call this function after rendering categories
+      function renderCategories() {
+        const container = document.getElementById("categoryContainer");
+        container.innerHTML = "";
+
+        categories.forEach((category, index) => {
+          const div = document.createElement("div");
+          div.classList.add("category");
+
+          div.innerHTML = `
+                <label>
+                    <input type="radio" name="category" value="${category.value}">
+                    <span id="cat-${index}">${category.label}</span>
+                </label>
+                <button class="remove-btn" onclick="removeCategory(${index})">✖</button>
+            `;
+
+          container.appendChild(div);
+        });
+
+        addLongPressListener(); // Apply long-press behavior
       }
 
       function saveEdit(index, newValue) {
