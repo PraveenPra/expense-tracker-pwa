@@ -371,6 +371,14 @@
 
       let categories = loadCategories();
       renderCategories();
+
+      document.querySelectorAll("input[type='text']").forEach((input) => {
+        input.addEventListener("input", (event) => {
+          event.target.value = event.target.value.replace(/\b\w/g, (char) =>
+            char.toUpperCase()
+          );
+        });
+      });
     </script>
   </body>
 </html>

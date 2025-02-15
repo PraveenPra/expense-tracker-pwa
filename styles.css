@@ -32,7 +32,7 @@ th, td {
 }
 
 /* Category Container */
-.category-container {
+.category-container,.payment-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
     gap: 16px;
@@ -41,7 +41,7 @@ th, td {
     background-color: #f0f0f0;
 }
 
-.category-container label {
+.category-container label ,.payment-container label{
     display: flex;
     align-items: center;
     justify-content: start;
@@ -55,7 +55,7 @@ th, td {
     background: #fff;
 }
 
-.category-container input[type="radio"] {
+.category-container input[type="radio"] ,.payment-container input[type="radio"]{
     margin-right: 8px;
     width:16px;
 }

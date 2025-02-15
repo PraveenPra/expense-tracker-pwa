@@ -66,3 +66,11 @@ form.addEventListener("submit", function (e) {
   form.reset();
   ResetDate();
 });
+
+document.querySelectorAll("input[type='text']#description").forEach((input) => {
+  input.addEventListener("input", (event) => {
+    event.target.value = event.target.value.replace(/\b\w/g, (char) =>
+      char.toUpperCase()
+    );
+  });
+});
